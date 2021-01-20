@@ -22,6 +22,21 @@ char shiftChar(char c, int shift, int direction)
   //   shiftChar('c', 3, 1) : 'f'
   //   shiftChar('S', 2, 0) : 'P'
   //   shiftChar('b', 3, 0) : '8'
+  char* x = strchr(CHARS, c);
+  int index = (int)(x-CHARS);
+  if (direction == 0) {
+    index = index - shift;
+    if (index < 0) {
+      index += strlen(CHARS);
+    }
+  }
+  else {
+    index = index + shift;
+    if (index > strlen(CHARS)-1) {
+      index -= strlen(CHARS);
+    }
+  }
+  return CHARS[index];
 }
 
 
